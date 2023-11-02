@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  yahoo:
+    container_name: yahoo-con
+    build: .
+    ports:
+      -"3000:3000"
+    image: yahoo:1.0.0
+
+Dockerfile
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [ "python","./main.py" ]
